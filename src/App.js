@@ -1,9 +1,15 @@
 import {HashRouter as Router, Route, NavLink} from 'react-router-dom';
 import React from 'react';
+import Navbar from 'react-bootstrap/Navbar'
+import Nav from 'react-bootstrap/Nav'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {Form, FormControl} from 'react-bootstrap'
 import Home from './Home';
 import FindHelp from './FindHelp';
 import GiveHelp from './GiveHelp';
 import './App.css';
+import { Button} from 'react-bootstrap';
+import Switch from 'react-bootstrap/esm/Switch';
 
 
 class App extends React.Component {
@@ -16,27 +22,25 @@ class App extends React.Component {
 
       <Router>
 
-        <div class="navbar">
-          <h2 class="brand">MacTutor</h2>
+        <Navbar expand="lg">
+          <Navbar.Brand>MacTutors</Navbar.Brand>
           <NavLink exact to="/"><i class="fa fa-home"></i></NavLink>
           <NavLink to="/FindHelp">Find Help</NavLink>
           <NavLink to="/GiveHelp">Give Help</NavLink>
           <a class="hamburger" id="hamburger">
-              <i class="fa fa-bars"></i>
+            <FontAwesomeIcon icon="bars" size="2x"/>
           </a>
-          <div class="search">
-              <input type="text" placeholder="Search.."/>
-              <button>
-                  <i class="fa fa-search"></i>
-              </button>
-          </div>
-        </div>
+          <Form inline>
+            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+            <Button variant="outline-light"><FontAwesomeIcon icon="search" size="2x"/></Button>
+          </Form>
+        </Navbar>
         
-        <div>
+        <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/FindHelp" component={FindHelp} />
+          <Route path="/FindHelp" render={(props) => (<FindHelp {...props} courses={this.state.courses?? []} />)}/>
           <Route path="/GiveHelp" component={GiveHelp} />
-        </div>
+        </Switch>
 
       </Router>
     );

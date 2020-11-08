@@ -8,8 +8,7 @@
   color: red;
 }
 
-#brand{
-
+.Brand{
 font-weight: bold;
 font-size: 20px;
 }
@@ -26,7 +25,7 @@ font-size: 17px;
 font-family: Arial;
 }
 
-.brand {
+.Brand {
   color: white;
 }
 
