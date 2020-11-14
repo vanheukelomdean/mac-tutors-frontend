@@ -3,11 +3,10 @@
   overflow: hidden;
 }
 
-.form-group.required .control-label:after {
+.form-group.required .control-label:before {
   content: "*";
   color: red;
 }
-
 
 .navbar a {
 float: left;
@@ -80,6 +79,16 @@ float: right;
 .navbar button:hover {
   background-color: #DAA520;
   color: black;
+}
+
+.program-input {
+  width: 50%;
+}
+
+.col {
+  padding: 50px;
+  text-align: center;
+  flex: content;
 }
 
 @media screen and (max-width: 600px) {

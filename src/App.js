@@ -16,6 +16,8 @@ import Switch from 'react-bootstrap/esm/Switch';
 class App extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {courses: []};
   }
   
   render() {
