@@ -1,34 +1,52 @@
 import React from 'react';
+import SignupForm from './SignupForm';
+import LoginForm from './LoginForm';
 import './App.css';
 
 class Home extends React.Component{
   constructor(props){
     super(props);
+    this.state = { page: "signup" };
+    this.changeForm = this.changeForm.bind(this);
+    this.userRegistered = this.userRegistered.bind(this);
+    this.getComponent.bind(this);
+  }
+
+  userRegistered(){
+    this.setState({
+      page: "home"
+    });
+  }
+
+  changeForm(){
+    if (this.state.page==="login"){
+      this.setState({
+        page: "signup"
+      });
+    } else if (this.state.page==="signup"){
+      this.setState({
+        page: "login"
+      });
+    }
+    
+  }
+
+  getComponent(){
+    if (this.state.page==="home"){
+      return <h1>This is Home!</h1>
+    } else if (this.state.page==="signup"){
+      return <SignupForm changeForm={this.changeForm} userRegistered={this.userRegistered}/>
+    } else if (this.state.page==="login"){
+      return <LoginForm changeForm={this.changeForm} userRegistered={this.userRegistered}/>
+    }
   }
 
   render() {
     return (
-      <div class="container">
-        <br/>
-        <h1 class="text-center">Earn money as a McMaster tutor or find a tutor for your class!</h1>
-        <h2>Login to begin</h2>
-        <form>
-            <div class="form-group">
-                <label for="usr">Name:</label>
-                <input type="text" class="form-control" id="usr"/>
-                <div id="usrfeedback" class="invalid-feedback"> </div>
-            </div>
-            <div class="form-group">
-                <label for="pwd">Password:</label>
-                <input type="text" class="form-control" id="pwd"/>
-                <div id="pwdfeedback" class="invalid-feedback"> </div>
-            </div>
-
-            <input type="button" value="Login" id="login" class="btn btn-primary"/>
-        </form>
-        <a class="text-center" href="signup.html">Sign Up</a>
+      <div>
+        {this.getComponent()}
       </div>
-      );
+    )
   }
 }
 
