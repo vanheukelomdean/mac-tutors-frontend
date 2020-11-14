@@ -85,6 +85,12 @@ float: right;
   width: 50%;
 }
 
+.col {
+  padding: 50px;
+  text-align: center;
+  flex: content;
+}
+
 @media screen and (max-width: 600px) {
 .navbar input[type=text] {
   float: none;
