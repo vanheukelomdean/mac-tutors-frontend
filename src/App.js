@@ -1,4 +1,4 @@
-import {HashRouter as Router, Route, NavLink} from 'react-router-dom';
+import {HashRouter as Router, Route, NavLink, Redirect} from 'react-router-dom';
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
@@ -10,13 +10,29 @@ import GiveHelp from './GiveHelp';
 import './App.css';
 import { Button} from 'react-bootstrap';
 import Switch from 'react-bootstrap/esm/Switch';
-
+import { courses } from './data/mcmasterCourses.js';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {courses: [], user : null};
+    this.userRegistered = this.userRegistered.bind(this);
+    this.findHelp = this.findHelp.bind(this);
+    this.giveHelp = this.giveHelp.bind(this);
+  }
 
-    this.state = {courses: []};
+  userRegistered(usr){
+    this.setState({
+      user : usr
+    });
+  }
+
+  findHelp(){
+    <Redirect to='/FindHelp'/>
+  }
+
+  giveHelp(){
+    <Redirect to='/GiveHelp'/>
   }
   
   render() {
@@ -39,9 +55,9 @@ class App extends React.Component {
         </Navbar>
         
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/FindHelp" render={(props) => (<FindHelp {...props} courses={this.state.courses?? []} />)}/>
-          <Route path="/GiveHelp" component={GiveHelp} />
+          <Route exact path="/" render={(props) => (<Home {...props} userRegistered={this.userRegistered} user={this.state.user} findHelp={this.findHelp} giveHelp={this.giveHelp}/>)} />
+          <Route path="/FindHelp" render={(props) => (this.state.user != null ? <FindHelp {...props} courses={this.state.courses?? []} /> : <Redirect to='/' />)}/>
+          <Route path="/GiveHelp" render={(props) => (this.state.user != null ? <GiveHelp/> : <Redirect to='/' />)}/>
         </Switch>
 
       </Router>

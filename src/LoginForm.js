@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import { users } from './data/users';
 
 class LoginForm extends React.Component {
     constructor(props){
@@ -25,7 +26,15 @@ class LoginForm extends React.Component {
         }
     }
 
+    clearState() {
+        this.setState({
+            emailFeedback: {class: "", message: ""},
+            pwdFeedback: {class: "", message: ""}
+        });
+    }
+
     handleSubmit(){
+        this.clearState();
         if (this.state.email.length==0){
             this.setState({
                 emailFeedback: {class: "form-control is-invalid", message: "Please enter your email"}
@@ -34,8 +43,19 @@ class LoginForm extends React.Component {
             this.setState({
                 pwdFeedback: {class: "form-control is-invalid", message: "Please enter your password"}
             });
+        } 
+        var user = users.filter((x) => x.email === this.state.email);
+        if (user.length == 0) {
+            this.setState({
+                emailFeedback: {class: "form-control is-invalid", message: "Incorrect email"}
+            });
+        } else if (user.length > 0 && this.state.pwd !== user[0].password) {
+            this.setState({
+                emailFeedback: {class: "form-control is-valid", message: "Email OK"},
+                pwdFeedback: {class: "form-control is-invalid", message: "Incorrect password"}
+            });
         } else {
-            this.props.userRegistered();
+            this.props.userRegistered(user[0]);
         }
         
     }
