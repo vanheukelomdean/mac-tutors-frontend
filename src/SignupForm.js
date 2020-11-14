@@ -238,9 +238,9 @@ class SignupForm extends React.Component {
                     </div>
                 </div>
                 <input type="button" value="Sign up" id="signup" class="btn btn-primary" onClick={this.handleSubmit.bind(this)} />
+                <input type="button" class="btn btn-link" value="Login" id="login" onClick={this.props.changeForm}/>
                 <div id="submitfeedback" class={this.state.overallFeedback.class}>{this.state.overallFeedback.message}</div>
             </form>
-            <a class="text-center" onClick={this.props.changeForm}>Login</a>
         </div>
       );
     }
