@@ -2,11 +2,12 @@ import React from 'react';
 import SignupForm from './SignupForm';
 import LoginForm from './LoginForm';
 import './App.css';
+import {Link} from 'react-router-dom';
 
-class HomePage extends React.Component {
+class WelcomePage extends React.Component {
   constructor(props){
     super(props);
-
+    this.state = { transcript : null, paymentInfo : null };
   }
 
   render(){
@@ -37,14 +38,104 @@ class HomePage extends React.Component {
   }
 }
 
+class HomePage extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = { transcriptFeedback: { class: "", message: ""}, paymentFeedback: { class: "", message: ""} };
+    this.infoMessage.bind(this);
+  }
+
+  handleSubmit() { 
+    this.setState({transcriptFeedback: { class: "", message: ""}, paymentFeedback: { class: "", message: ""}});
+    if (this.state.transcript != null && this.state.paymentInfo != null){
+      this.props.userRegistered({email: this.props.user.email, password: this.props.user.password, name: this.props.user.name, type: "tutor"})
+    } if (this.state.transcript == null) {
+      this.setState({transcriptFeedback: {class:"form-control is-invalid", message:"Upload a transcript"}})
+    } if (this.state.paymentInfo == null) {
+      this.setState({paymentFeedback: {class:"form-control is-invalid", message:"Upload payment info"}})
+    }
+  }
+
+  getUpload(event){
+    if (event.target.id === "transcript"){
+        if (event.target.files.length > 0){
+            this.setState({ transcript: URL.createObjectURL(event.target.files[0]) });
+        } else {
+            this.setState({ transcript: null});
+        }
+    } else if (event.target.id === "payment-info"){
+        if (event.target.files.length > 0){
+            this.setState({ paymentInfo: URL.createObjectURL(event.target.files[0]) });
+        } else {
+            this.setState({ paymentInfo: null });
+        }
+    }
+}
+
+  infoMessage(){
+    if (this.props.user.type === "student"){
+      return (
+      <div class="row">
+        <div class="col">
+          <h3 class="text-center">You must register as a tutor to give help.</h3>
+          <div class="alert alert-info">
+            <h3>Becoming a tutor</h3>
+            <p>Upload the following files to become a tutor (can be completed later)</p>
+            <div class="form-group">
+                <label for="transcript" class="control-label">Upload transcript (pdf):</label>
+                <input type="file" class="form-control-file" id="transcript" accept=".pdf" onChange={this.getUpload.bind(this)}/>
+                <div id="transcriptfeedback" class={this.state.transcriptFeedback.class}>{this.state.transcriptFeedback.message}</div>
+            </div>
+            <div class="form-group">
+                <label for="payment-info" class="control-label">Upload void check or direct deposit form (pdf):</label>
+                <input type="file" class="form-control-file" id="payment-info" accept=".pdf" onChange={this.getUpload.bind(this)}/>
+                <div id="paymentfeedback" class={this.state.paymentFeedback.class}>{this.state.paymentFeedback.message}</div>
+            </div>
+          </div>
+          <input type="button" value="Register" id="register" class="btn btn-primary" onClick={this.handleSubmit.bind(this)} />
+        </div>
+      </div>
+    )}
+  }
+
+  render() {
+    return(
+      <div>
+      <h1 class="text-center">Welcome, {this.props.user.name}! You are a {this.props.user.type}.</h1>
+      <div class="container">
+      <div class="row">
+        <div class="col">
+              <img src="learn.png" alt="Learn Icon"/>
+              <h1>Learn.</h1>
+              <b>Find Tutors for you courses at McMaster.</b><br/>
+              <Link to="/FindHelp"><input type="button" value="Find Help" id="gethelp" class="btn btn-secondary"/></Link>
+        </div>
+        <div class="col">
+          <img src="teach.png" alt="Teach Icon"/>
+          <h1>Teach.</h1>
+          <b>Help students with their courses at McMaster.</b><br/>
+          <Link to="/GiveHelp"><input type="button" value="Give Help" id="givehelp" class="btn btn-secondary" disabled={this.props.user.type==="student"}/></Link>
+        </div>
+      </div>
+        {this.infoMessage()}
+      </div>
+    </div>
+    )
+  }
+
+
+}
+
 class Home extends React.Component{
   constructor(props){
     super(props);
-    this.state = { page: "home" };
+    this.state = { page: "welcome" };
     this.changeForm = this.changeForm.bind(this);
     this.setSignup = this.setSignup.bind(this);
     this.setLogin = this.setLogin.bind(this);
     this.userRegistered = this.userRegistered.bind(this);
+    this.findHelp = this.findHelp.bind(this);
+    this.giveHelp = this.giveHelp.bind(this);
     this.getComponent.bind(this);
   }
 
@@ -60,10 +151,8 @@ class Home extends React.Component{
     });
   }
 
-  userRegistered(){
-    this.setState({
-      page: "home"
-    });
+  userRegistered(usr){
+    this.props.userRegistered(usr);
   }
 
   changeForm(){
@@ -79,9 +168,19 @@ class Home extends React.Component{
     
   }
 
+  findHelp() {
+    this.props.findHelp();
+  }
+
+  giveHelp() {
+    this.props.giveHelp();
+  }
+
   getComponent(){
-    if (this.state.page==="home"){
-      return <HomePage signup={this.setSignup} login={this.setLogin}/>
+    if (this.props.user != null){
+      return <HomePage user={this.props.user} userRegistered={this.userRegistered} findHelp={this.findHelp} giveHelp={this.giveHelp}/>
+    } else if (this.state.page==="welcome"){
+      return <WelcomePage signup={this.setSignup} login={this.setLogin}/>
     } else if (this.state.page==="signup"){
       return <SignupForm changeForm={this.changeForm} userRegistered={this.userRegistered}/>
     } else if (this.state.page==="login"){

@@ -1,4 +1,4 @@
-import {HashRouter as Router, Route, NavLink} from 'react-router-dom';
+import {HashRouter as Router, Route, NavLink, Redirect} from 'react-router-dom';
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,13 +11,29 @@ import TutorProfile from './TutorProfile';
 import './App.css';
 import { Button} from 'react-bootstrap';
 import Switch from 'react-bootstrap/esm/Switch';
-
+import { courses } from './data/mcmasterCourses.js';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {courses: [], user : null};
+    this.userRegistered = this.userRegistered.bind(this);
+    this.findHelp = this.findHelp.bind(this);
+    this.giveHelp = this.giveHelp.bind(this);
+  }
 
-    this.state = {courses: []};
+  userRegistered(usr){
+    this.setState({
+      user : usr
+    });
+  }
+
+  findHelp(){
+    <Redirect to='/FindHelp'/>
+  }
+
+  giveHelp(){
+    <Redirect to='/GiveHelp'/>
   }
   
   render() {
@@ -40,9 +56,9 @@ class App extends React.Component {
         </Navbar>
         
         <Switch>
-          <Route exact path="/"  component={Home}/>
-          <Route path="/FindHelp" render={(props) => (<FindHelp {...props} courses={ ["2C03", "4HC3", "3A04"]} />)}/>
-          <Route path="/GiveHelp" component={GiveHelp} />
+          <Route exact path="/" render={(props) => (<Home {...props} userRegistered={this.userRegistered} user={this.state.user} findHelp={this.findHelp} giveHelp={this.giveHelp}/>)} />
+          <Route path="/FindHelp" render={(props) => (this.state.user != null ? <FindHelp {...props} courses={ ["2C03", "4HC3", "3A04"]} /> : <Redirect to='/' />)}/>
+          <Route path="/GiveHelp" render={(props) => (this.state.user != null ? <GiveHelp/> : <Redirect to='/' />)}/>
           <Route path="/profile" render={(props) => (<TutorProfile {...props} name={this.state.name} />)}/>
         </Switch>
 
