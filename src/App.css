@@ -3,7 +3,7 @@
   overflow: hidden;
 }
 
-.form-group.required .control-label:after {
+.form-group.required .control-label:before {
   content: "*";
   color: red;
 }
@@ -11,6 +11,7 @@
 .Brand{
 font-weight: bold;
 font-size: 20px;
+color: white;
 }
 
 .navbar a {
@@ -25,8 +26,10 @@ font-size: 17px;
 font-family: Arial;
 }
 
-.Brand {
-  color: white;
+img {
+  width: 200px;
+  height: 200px;
+  padding: 10px;
 }
 
 .navbar a:hover {
@@ -76,6 +79,10 @@ float: right;
 .navbar button:hover {
   background-color: #DAA520;
   color: black;
+}
+
+.program-input {
+  width: 50%;
 }
 
 @media screen and (max-width: 600px) {
