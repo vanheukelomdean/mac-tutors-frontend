@@ -25,16 +25,10 @@ font-size: 17px;
 font-family: Arial;
 }
 
-.brand {
-  font: white;
-  display: block;
-  color: #f2f2f2;
-  margin: auto;
-  text-align: center;
-  text-decoration: none;
-  padding: 17px 40px;
-  font-size: 17px;
-  font-family: Arial;
+img {
+  width: 200px;
+  height: 200px;
+  padding: 10px;
 }
 
 .navbar a:hover {
@@ -69,6 +63,7 @@ float: right;
   margin-right: 16px;
   font-size: 17px;
 }
+
 .navbar button {
   float: right;
   display: inline-block;
@@ -94,6 +89,12 @@ float: right;
   padding: 50px;
   text-align: center;
   flex: content;
+}
+
+img {
+  width: 200px;
+  height: 200px;
+  padding: 10px;
 }
 
 @media screen and (max-width: 600px) {

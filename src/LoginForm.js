@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { users } from './data/users';
+import users from './data/users';
 
 class LoginForm extends React.Component {
     constructor(props){

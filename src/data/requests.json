@@ -1,0 +1,16 @@
+[
+    {
+        "name" : "Jane Smith",
+        "email" : "janesmith@abc.com",
+        "picture" : "./33.jpg",
+        "course" : { "type": "SFWRENG", "code": "2C03", "description": "Algorithms and Data Structures" },
+        "date" : "2020-11-15 6:30:00 PM"
+    },
+    {
+        "name" : "Jim Smith",
+        "email" : "jimsmith@abc.com",
+        "picture" : "./34.jpg",
+        "course" : { "type": "SFWRENG", "code": "4TH3", "description": "Theory of Computation" },
+        "date" : "2020-11-15 6:30:00 PM"
+    }
+]

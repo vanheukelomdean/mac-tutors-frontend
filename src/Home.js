@@ -100,7 +100,7 @@ class HomePage extends React.Component {
 
   render() {
     return(
-      <div>
+      <div><br/>
       <h1 class="text-center">Welcome, {this.props.user.name}! You are a {this.props.user.type}.</h1>
       <div class="container">
       <div class="row">

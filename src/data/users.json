@@ -1,4 +1,4 @@
-export const users = [
+[
     {
         "email" : " ",
         "password" : " ",
@@ -17,4 +17,4 @@ export const users = [
          "name" : "Will",
          "type" : "student"
      }
-];
+]

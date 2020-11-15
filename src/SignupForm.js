@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { mcmasterPrograms } from "./data/mcmasterPrograms.js";
+import mcmasterPrograms from "./data/mcmasterPrograms.json";
 
 class SignupForm extends React.Component {
     constructor(props){
