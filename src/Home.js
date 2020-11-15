@@ -108,16 +108,24 @@ class HomePage extends React.Component {
               <img src="learn.png" alt="Learn Icon"/>
               <h1>Learn.</h1>
               <b>Find Tutors for you courses at McMaster.</b><br/>
-              <Link to="/FindHelp"><input type="button" value="Find Help" id="gethelp" class="btn btn-secondary"/></Link>
+              
         </div>
         <div class="col">
           <img src="teach.png" alt="Teach Icon"/>
           <h1>Teach.</h1>
           <b>Help students with their courses at McMaster.</b><br/>
-          <Link to="/GiveHelp"><input type="button" value="Give Help" id="givehelp" class="btn btn-secondary" disabled={this.props.user.type==="student"}/></Link>
+          <p>Add couses you would like to be a tutor for on your profile page.</p>
         </div>
       </div>
-        {this.infoMessage()}
+      <div class="row">
+        <div class="col">
+          <Link to="/FindHelp"><input type="button" value="Find Help" id="gethelp" class="btn btn-secondary"/></Link>
+        </div>
+        <div class="col">
+          <Link to="/UserProfile"><input type="button" value="Profile" id="givehelp" class="btn btn-secondary" disabled={this.props.user.type==="student"}/></Link>
+        </div>
+      </div>
+      {this.infoMessage()}
       </div>
     </div>
     )
