@@ -4,7 +4,7 @@
         "program": "Software Engineering",
         "description": "Student who loves robotics, machine learning, and user interface design.",
         "email": "vanheukd@mcmaster.ca",
-        "image": "dean_vanheukelom.jpg",
+        "image": "deanvanheukelom.jpg",
         "level": "gold",
         "rating": 3.6,
         "courses": [{"name": "Algorithms and Data Structures",
@@ -20,17 +20,17 @@
                     "rating": 4,
                     "student": {"name": "Ryan Shortt",
                                 "program": "Computer Engineering",
-                                "image": "ryan_shortt.jpg"}},
+                                "image": "ryanshortt.jpg"}},
                     {"text": "pleasure working with him",
                     "rating": 2,
                     "student": {"name": "Will Donaldson",
                                 "program": "Software Engineering",
-                                "image": "will_donaldson.jpg"}},
+                                "image": "willdonaldson.jpg"}},
                     {"text": "good guy",
                         "rating": 2,
                         "student": {"name": "Scott O'Donoghue",
                                     "program": "Economoics",
-                                    "image": "scoot_odonoghue.jpg"}}
+                                    "image": "scottodonoghue.jpg"}}
                     ]
     },
     {
@@ -38,7 +38,7 @@
         "program": "Computer Engineering",
         "description": "Student who loves circuits, neural networks, and playing the piano.",
         "email": "shorttr@mcmaster.ca",
-        "image": "ryan_shortt.jpg",
+        "image": "ryanshortt.jpg",
         "level": "silver",
         "rating": 4.6,
         "courses": [{"name": "Databases",

@@ -57,7 +57,7 @@ class App extends React.Component {
         
         <Switch>
           <Route exact path="/" render={(props) => (<Home {...props} userRegistered={this.userRegistered} user={this.state.user} findHelp={this.findHelp} giveHelp={this.giveHelp}/>)} />
-          <Route path="/FindHelp" render={(props) => (this.state.user != null ? <FindHelp {...props} courses={ ["2C03", "4HC3", "3A04"]} /> : <Redirect to='/' />)}/>
+          <Route path="/FindHelp" render={(props) => <FindHelp {...props} courses={ ["2C03", "4HC3", "3A04"]} />}/>
           <Route path="/GiveHelp" render={(props) => (this.state.user != null ? <GiveHelp/> : <Redirect to='/' />)}/>
           <Route path="/profile" render={(props) => (<TutorProfile {...props} name={this.state.name} />)}/>
         </Switch>

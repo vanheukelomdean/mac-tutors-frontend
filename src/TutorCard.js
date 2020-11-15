@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {Link} from 'react-router-dom';
 import { Container, Row, Col, Button, Card, Image } from 'react-bootstrap';
 import StarRatings from 'react-star-ratings';
 import './App.css';
@@ -10,6 +10,7 @@ class TutorCard extends React.Component{
     this.state = {name: this.props.tutor.name, 
                     program: this.props.tutor.program, 
                     image: this.props.tutor.image, 
+                    level: this.props.tutor.level,
                     rating: this.props.tutor.rating,
                     grade: this.props.grade};
   }
@@ -21,10 +22,13 @@ class TutorCard extends React.Component{
                 <Row>
                     <Col className="col-md-3">
                         <Row>
-                            <Image src={`./images/${this.state.image}`} className='avatar-card' />
+                            <Image src={`./images/${this.state.image}`} className={`avatar-card avatar-${this.state.level}`} />
                         </Row>
                         <Row>
-                            <Button className="view-button"> View Profile</Button>
+                            <Link to={{ pathname: "profile",
+                                        query:{search: this.state.name.replace(/\s+/g, '+').toLowerCase()} }}> 
+                                <Button className="view-button"> View Profile</Button>
+                            </Link>
                         </Row>
                     </Col>
                     <Col className="col-md-6">
@@ -35,7 +39,10 @@ class TutorCard extends React.Component{
                             <h2>{this.state.program}</h2>
                         </Row>
                         <Row>
-                            <Button className="hire-button" > Hire</Button>
+                            <Link to={{ pathname: "hire",
+                                        query:{search: this.state.name.replace(/\s+/g, '+').toLowerCase()} }}> 
+                                <Button className="hire-button" > Hire</Button>
+                            </Link>
                         </Row>
                     </Col>
                     <Col className="col-md-3 text-center">
@@ -43,14 +50,12 @@ class TutorCard extends React.Component{
                             <h1 className='tutor-listing-grade'>{this.state.grade}</h1>
                         </Row>
                         <Row className>
-                            <StarRatings
-                                    rating={this.state.rating}
-                                    starRatedColor="gold"
-                                    numberOfStars={5}
-                                    name='rating'
-                                    starDimension="30px"
-                                    starSpacing="5px"
-                                />
+                            <StarRatings rating={this.state.rating}
+                                        starRatedColor="gold"
+                                        numberOfStars={5}
+                                        name='rating'
+                                        starDimension="30px"
+                                        starSpacing="5px" />
                         </Row>
                     </Col>
                 </Row>

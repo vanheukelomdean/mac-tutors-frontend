@@ -1,12 +1,17 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import { Container, Row, Col, Button, Image, Card } from 'react-bootstrap';
-import tutors from './tutors.json';
+import StarRatings from 'react-star-ratings';
+import tutors from './data/tutors.json';
 import './App.css';
 
 class TutorProfile extends React.Component{
   constructor(props){
     super(props);
-    this.state = tutors.filter(profile => profile.name == this.props.name)[0];
+    var str = this.props.location.query.search;
+    var name = str.replace(/\+/g, ' ');
+    console.log(name);
+    this.state = tutors.filter(profile => profile.name.toLowerCase() == name)[0];
   }
 
   render() {
@@ -15,16 +20,24 @@ class TutorProfile extends React.Component{
                 <Row>
                     <Col className="col-md-8">
                         <h1>{this.state.name}</h1>
-                        <h2>{this.state.program}</h2>
+                        <h2>{this.state.program}</h2> 
                         <p>{this.state.description}</p>
+                        <Link to={{ pathname: "hire",
+                                        query:{search: this.state.name.replace(/\s+/g, '+').toLowerCase()} }}> 
+                            <Button className="hire-button"> Hire</Button>
+                        </Link>
                     </Col>
-
                     <Col className="col-md-4">
                         <Row>
-                            <img src={`./images/${this.state.image}`} className="avatar"/>
+                            <img src={`./images/${this.state.image}`} className={`avatar-card avatar-${this.state.level}`} />
                         </Row>
                         <Row>
-                            <Button className="hire-button"> Hire</Button>
+                            <StarRatings rating={this.state.rating}
+                                            starRatedColor="gold"
+                                            numberOfStars={5}
+                                            name='rating'
+                                            starDimension="30px"
+                                            starSpacing="5px" />
                         </Row>
                     </Col>
                 </Row>
@@ -35,9 +48,21 @@ class TutorProfile extends React.Component{
                     {this.state.courses.map(({name, code, grade}) => 
                         <Col>
                             <Card className="course-card">
-                                <Card.Title className="course-name">{name}</Card.Title>
-                                <Card.Subtitle className="course-code">{code}</Card.Subtitle>
-                                <Card.Body className="course-grade"><p className="grade">{grade} </p></Card.Body>
+                                <Card.Title>
+                                    <p className="course-name">
+                                        {name} 
+                                    </p>
+                                </Card.Title>
+                                <Card.Subtitle>
+                                    <p className="course-code">
+                                        {code}
+                                    </p>
+                                    </Card.Subtitle>
+                                <Card.Body>
+                                    <p className="course-grade">
+                                        {grade} 
+                                    </p>
+                                </Card.Body>
                             </Card>
                         </Col>
                     )}
@@ -52,7 +77,12 @@ class TutorProfile extends React.Component{
                                 <p>{text}</p>
                             </Row>
                             <Row>
-                                <p>{rating}</p>
+                                <StarRatings rating={this.state.rating}
+                                            starRatedColor="gold"
+                                            numberOfStars={5}
+                                            name='rating'
+                                            starDimension="20px"
+                                            starSpacing="3px" />
                             </Row>
                         </Col>
                         <Col clasName="col-md-4">
