@@ -9,12 +9,11 @@ class SearchTutors extends React.Component{
   }
 
   render() {
-    const { query } = this.props.location;
     return (
         
         <Container>
-            <h1 class="text-center">{query.results.length == 0 ? "No results for search: "+query.search : ""}</h1>
-            {query.results.map((tutor) =>
+            <h1 class="text-center">{this.props.results.length == 0 ? "No results for search: "+this.props.search : ""}</h1>
+            {this.props.results.map((tutor) =>
             <Row>
               <TutorCard tutor={tutor} grade=""/>
             </Row>

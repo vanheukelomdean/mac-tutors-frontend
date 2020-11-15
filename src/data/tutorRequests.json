@@ -1,0 +1,29 @@
+[
+    {
+        "name" : "Rebecca Childs",
+        "student_email" : " ",
+        "email" : "rebeccachilds@abc.com",
+        "picture" : "./15.jpg",
+        "course" : { "type": "CHEMENG", "code": "4TA3 A/B", "description": "Engineering Practicum" },
+        "date" : "2020-11-15 6:30:00 PM",
+        "state" : "decline"
+    },
+    {
+        "name" : "Megan Anne",
+        "student_email" : " ",
+        "email" : "megananne@abc.com",
+        "picture" : "./41.jpg",
+        "course" : { "type": "BIOTECH", "code": "4BL3", "description": "Biomaterials and Biocompatibility" },
+        "date" : "2020-11-15 6:30:00 PM",
+        "state" : "accept"
+    },
+    {
+        "name" : "Brooke Smith",
+        "student_email" : " ",
+        "email" : "brookesmith@abc.com",
+        "picture" : "./44.jpg",
+        "course" : { "type": "COMMERCE", "code": "4AK3", "description": "Accounting Information for Decision Making" },
+        "date" : "2020-11-15 6:30:00 PM",
+        "state" : "pending"
+    }
+]
