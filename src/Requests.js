@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import studentRequests from './data/studentRequests';
 import tutorRequests from './data/tutorRequests';
-import { Alert, Button, Table, Container } from 'react-bootstrap';
+import { Alert, Button, Table, Container, Row, Col } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 
 class Response extends React.Component {
@@ -44,22 +44,22 @@ class StudentRequests extends React.Component {
     var relevantRequests = studentRequests.filter(req => req.tutor_email === this.props.user.email);
     if (this.props.user.type === "student") {
       return (
-        <div class="text-center"><br/>
+        <Col><br/>
             <h1>Requests from Students:</h1><br/>
-            <h1>You must become a tutor before you can receive requests from students.</h1>
-            <Link to="/Home"><input type="button" value="Home" id="home" class="btn btn-secondary"/></Link>
-        </div>
+            <b>You must become a tutor before you can receive requests from students.</b><br/>
+            <Link to="/UserProfile"><input type="button" value="Profile" id="profile" class="btn btn-secondary"/></Link>
+        </Col>
       );
     } else if (relevantRequests.length == 0) {
       return(
-        <Container className="text-center">
+        <Col className="text-center">
           <h1>Requests from Students:</h1><br/>
-          <h1>You have no requests from students at this time.</h1>
-        </Container>
+          <b>You have no requests from students at this time.</b>
+        </Col>
       );  
     } else {
       return (
-      <Container>
+      <Col>
         <h1>Requests from Students:</h1><br/>
       <Table striped bordered hover>
         <thead>
@@ -86,7 +86,7 @@ class StudentRequests extends React.Component {
             )}
           </tbody>
         </Table>
-      </Container>
+      </Col>
     )}
   }
 }
@@ -110,16 +110,16 @@ class TutorRequests extends React.Component{
     var relevantRequests = tutorRequests.filter(req => req.student_email === this.props.user.email)
     if (relevantRequests.length == 0) {
       return (
-        <div class="text-center"><br/>
+        <Col><br/>
             <h1>Requests for Tutors:</h1><br/>
-            <h1>You currently have no active requests for tutors at this time.</h1>
-            <b>You can request tutors from the Find Help page.</b><br/>
+            <b>You currently have no active requests for tutors at this time.</b>
+            <p>You can request tutors from the Find Help page.</p>
             <Link to="/FindHelp"><input type="button" value="Find Help" id="findhelp" class="btn btn-secondary"/></Link>
-        </div>
+        </Col>
       );
     } else {
       return (
-      <Container>
+      <Col>
         <h1>Requests for Tutors:</h1><br/>
       <Table striped bordered hover>
         <thead>
@@ -146,7 +146,7 @@ class TutorRequests extends React.Component{
             )}
           </tbody>
         </Table>
-      </Container>
+      </Col>
       
       );
     }
@@ -162,9 +162,14 @@ class Requests extends React.Component{
   render() {
     return(
       <Container>
-        <StudentRequests user={this.props.user}/>
-        <TutorRequests user={this.props.user}/>
+        <Row>
+          <StudentRequests user={this.props.user}/>
+        </Row>
+        <Row>
+          <TutorRequests user={this.props.user}/>
+        </Row>
       </Container>
+      
     );
   }
 } export default Requests;

@@ -83,7 +83,7 @@ class AddClasses extends React.Component {
             isMulti
             options={Courses}
             onChange={this.flipcheck.bind(this)}
-          />
+          /><br/>
           <Button onClick={this.addCourses.bind(this)}>Add</Button>
         </Container>
           
@@ -118,33 +118,37 @@ class Profile extends React.Component{
             </Row>
             <Row><br/></Row>
             <Row>
-              <p><b>Email: </b> {this.props.user.email}</p>
+              <p><b>Email: </b>{this.props.user.email}</p>
             </Row>
             <Row>
-              <p><b>Program: </b> {this.props.user.program}</p>
+              <b>Program:</b><p>  {this.props.user.program}</p>
             </Row>
             <Row>
-              <p><b>Profile Type: </b> {this.props.user.type}</p>
+              <p><b>Profile Type: </b>{this.props.user.type}</p>
             </Row>
             <Button onClick={this.logout.bind(this)}>Logout</Button>
           </Col>
         </Row>
         <Row>
           <Col className="text-center">
-            <h3 class="text-center">Courses you are a tutor for:</h3>
-            <Row>
-              {(this.props.user.courses.length==0) ? "No Courses Added." : this.props.user.courses.map((course) =>
-              <Card style={{ width: '14rem' }}>
-                <Card.Body>
-                  <Card.Text>
-                    <span class="bg-light">{course}</span>
-                  </Card.Text>
-                  <Button id={course} onClick={this.deleteCourse.bind(this)}>Delete</Button>
-                </Card.Body>               
-              </Card> 
-            )}
-            </Row><br/>
-            <h3>Add courses you would like to tutor:</h3><br/>
+            {this.props.user.type==="tutor" ? 
+            <Container>
+              <h3 class="text-center">Courses you are a tutor for:</h3>
+              <Row>
+                {(this.props.user.courses.length==0) ? <Col class="text-center">No Courses Added.</Col> : this.props.user.courses.map((course) =>
+                <Card style={{ width: '14rem' }}>
+                  <Card.Body>
+                    <Card.Text>
+                      <span class="bg-light">{course}</span>
+                    </Card.Text>
+                    <Button id={course} onClick={this.deleteCourse.bind(this)}>Delete</Button>
+                  </Card.Body>               
+                </Card> 
+              )}
+              </Row> 
+            </Container>: ""}
+            <br/>
+            <h3>{this.props.user.type==="tutor" ? "Add courses you would like to tutor:" : ""}</h3>
             <AddClasses deleteCourse={this.props.deleteCourse} addCourses={this.props.addCourses} user={this.props.user} userRegistered={this.props.userRegistered}/><br/>
           </Col>
           
