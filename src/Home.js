@@ -59,7 +59,7 @@ class HomePage extends React.Component {
           <img src="teach.png" alt="Teach Icon"/>
           <h1>Teach.</h1>
           <b>Help students with their courses at McMaster.</b><br/>
-          <p>{this.props.user.type==="tutor" ? "Add couses you would like to be a tutor for on your profile page." : "Register as a tutor on your profile page"}</p>
+          <p>{this.props.user.type==="tutor" ? "Add couses you would like to tutor on your profile page." : "Register as a tutor on your profile page"}</p>
         </div>
       </div>
       <div class="row">
