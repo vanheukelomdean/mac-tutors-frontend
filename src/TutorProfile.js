@@ -1,10 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import { Container, Row, Col, Button, Image, Card } from 'react-bootstrap';
-<<<<<<< HEAD
 import StarRatings from 'react-star-ratings';
-=======
->>>>>>> 5e0cc6e94e3c27caa422e92126dff358a907c592
 import tutors from './data/tutors.json';
 import './App.css';
 
