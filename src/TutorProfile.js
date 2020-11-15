@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Button, Image, Card } from 'react-bootstrap';
-import tutors from './tutors.json';
+import tutors from './data/tutors.json';
 import './App.css';
 
 class TutorProfile extends React.Component{

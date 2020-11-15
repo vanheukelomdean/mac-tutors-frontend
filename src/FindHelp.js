@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Container, Col,
         Form} from 'react-bootstrap';
-import mytutors from './tutors.json';
+import mytutors from './data/tutors.json';
 import TutorCard from './TutorCard.js';
 import './App.css';
 import { faAssistiveListeningSystems } from '@fortawesome/free-solid-svg-icons';
