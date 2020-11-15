@@ -69,27 +69,32 @@ class TutorProfile extends React.Component{
             <hr/>
 
             {this.state.reviews.map(({text, rating, student}) => 
-                <Row>
-                    <Col clasName="col-md-8">
-                        <Row>
-                            <p>{text}</p>
-                        </Row>
-                        <Row>
-                            <StarRatings rating={this.state.rating}
-                                        starRatedColor="gold"
-                                        numberOfStars={5}
-                                        name='rating'
-                                        starDimension="20px"
-                                        starSpacing="3px" />
-                        </Row>
-                    </Col>
-                    <Col clasName="col-md-4">
-                        <Row>
+            <Row> 
+                <Card className="review-card">
+                    <Row>
+                        <Col className="col-md-6 card-col">
+                            <Row>
+                                <p>{text}</p>
+                            </Row>
+                            <Row>
+                                <StarRatings rating={this.state.rating}
+                                            starRatedColor="gold"
+                                            numberOfStars={5}
+                                            name='rating'
+                                            starDimension="20px"
+                                            starSpacing="3px" />
+                            </Row>
+                        </Col>
+                        <Col className="col-md-2 card-col">
                             <Image src={`./images/${student.image}`} className="avatar-sm"/>
-                            <p> {student.name + ", " + student.program}</p>
-                        </Row>
-                    </Col>
-                </Row>
+                        </Col>
+                        <Col className="col-md-4 card-col">
+                                <p> {student.name + ", " + student.program}</p>
+                        </Col>
+                    </Row>
+                </Card>
+            </Row>
+
             )}
         </Container>
       );

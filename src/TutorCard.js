@@ -52,7 +52,7 @@ class TutorCard extends React.Component{
                                         numberOfStars={5}
                                         name='rating'
                                         starDimension="30px"
-                                        starSpacing="5px" />
+                                        starSpacing="5px"/>
                         </Row>
                     </Col>
                 </Row>

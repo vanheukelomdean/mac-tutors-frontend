@@ -3,6 +3,13 @@
   overflow: hidden;
 }
 
+.brand {
+  color: #ffffff;
+  font-weight: bolder;
+  font-size: 30px;
+  margin-top: 10px;;
+}
+
 .form-group.required .control-label:before {
   content: "*";
   color: red;
@@ -181,14 +188,33 @@ img {
 }
 
 .course-card {
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
   transition: 0.3s;
   border-radius: 5px; 
   height: 200px;
   width: auto;
+  background: rgba(218,165,32,.2);
+}
+
+.review-card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
+  transition: 0.3s;
+  border-radius: 5px; 
+  height: 120px;
+  width: 100%;
+  background: rgba(218,165,32,.2);
+  margin-bottom: 20px;
+}
+
+.card-col{
+  padding-top: 10px;
 }
 
 .course-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.review-card:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
@@ -197,7 +223,7 @@ img {
   margin-top: 40%;
   margin: auto;
   padding-bottom: 20px;
-  font-size: 60;
+  font-size: 60px;
 }
 
 .course-code {
@@ -224,10 +250,14 @@ img {
   margin-bottom: 10px;
 }
 
-.tutor-listing-text {
-  font-size: 60px;
+.star-ratings{
+  margin-left:auto;
+  margin-right:auto;
 }
+
 .tutor-listing-grade {
+  margin-left:auto;
+  margin-right:auto;
   font-size: 60px;
 }
 

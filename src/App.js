@@ -42,7 +42,7 @@ class App extends React.Component {
     return (
       <Router>
         <Navbar expand="lg">
-          <Navbar.Brand className="brand">MacTutors</Navbar.Brand>
+          <Navbar.Brand ><p className="brand"> MacTutors</p></Navbar.Brand>
           <NavLink to="/Home">
             <FontAwesomeIcon icon={faHome} size="2x"/>
           </NavLink>

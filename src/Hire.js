@@ -96,8 +96,6 @@ class LoginForm extends React.Component {
             this.state.end != null) {
 
             this.clearState();
-            console.log("cleared");
-            console.log(this.state);
         }
     }
 
@@ -111,6 +109,8 @@ class LoginForm extends React.Component {
             end: null,
             notes: null
         });
+
+        console.log("cleared");
     }
 
     render() {
@@ -178,7 +178,7 @@ class LoginForm extends React.Component {
                             <Form.Group className="required">
                                 <Form.Label for="end-time" className="control-label datetime-label">End Time:</Form.Label>
                                 <TimePicker id="end-time"
-                                            onChange={this.endTimeChange.bind(this)}
+                                            onSelect={this.endTimeChange.bind(this)}
                                             use12Hours={true}
                                             value={this.state.end}
                                             showSecond={false}
@@ -193,7 +193,7 @@ class LoginForm extends React.Component {
                                 <Form.Label>Extra Notes</Form.Label>
                                 <Form.Control as="textarea" 
                                             rows={3}
-                                            onChange={event => this.setState({ notes: event.target.value })}
+                                            onSelect={event => this.setState({ notes: event.target.value })}
                                             value={this.state.notes} />
                             </Form.Group>
                         </Col>
