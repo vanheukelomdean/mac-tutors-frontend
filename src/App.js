@@ -1,6 +1,7 @@
-import {HashRouter as Router, Route, Link, NavLink, Redirect} from 'react-router-dom';
 import React from 'react';
-import Navbar from 'react-bootstrap/Navbar'
+import {HashRouter as Router, Route, Link, NavLink, Redirect} from 'react-router-dom';
+import Switch from 'react-bootstrap/esm/Switch';
+import {Navbar, Nav} from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faSearch, faBell, faBars, faUserCircle} from '@fortawesome/free-solid-svg-icons';
 import {Form, FormControl} from 'react-bootstrap'
@@ -9,12 +10,12 @@ import Info from './Info';
 import FindHelp from './FindHelp';
 import Profile from './Profile';
 import Requests from './Requests';
-import tutors from './data/tutors';
+import Hire from './Hire'
 import TutorProfile from './TutorProfile';
-import './App.css';
-import { Button} from 'react-bootstrap';
-import Switch from 'react-bootstrap/esm/Switch';
 import SearchTutors from './SearchTutors';
+import tutors from './data/tutors';
+
+import './App.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -81,7 +82,8 @@ class App extends React.Component {
           <Route path="/Requests" render={(props) => (this.state.user != null ? <Requests {...props} user={this.state.user} userRegistered={this.userRegistered}/> : <Redirect to='/Info'/>)}/>
           <Route path="/Info" component={Info}/>
           <Route path="/SearchTutors" render={(props) => (this.state.user != null ? <SearchTutors {...props} search={this.state.search} results={this.state.results}/> : <Redirect to='/Info'/>)}/>
-          <Route path="/profile" render={(props) => (<TutorProfile {...props} name={this.state.name} />)}/>
+          <Route path="/profile" render={(props) => (<TutorProfile {...props}/>)}/>
+          <Route path="/hire" render={(props) => (<Hire {...props} user={this.state.user} />)}/>
         </Switch>
 
       </Router>

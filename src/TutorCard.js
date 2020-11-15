@@ -24,12 +24,10 @@ class TutorCard extends React.Component{
                         <Row>
                             <Image src={`./images/${this.state.image}`} className={`avatar-card avatar-${this.state.level}`} />
                         </Row>
-                        <Row>
-                            <Link to={{ pathname: "profile",
-                                        query:{search: this.state.name.replace(/\s+/g, '+').toLowerCase()} }}> 
-                                <Button className="view-button"> View Profile</Button>
-                            </Link>
-                        </Row>
+                        <Link to={{ pathname: "profile",
+                                    query:{search: this.state.name.replace(/\s+/g, '+').toLowerCase()} }}> 
+                            <Button className="view-button"> View Profile</Button>
+                        </Link>
                     </Col>
                     <Col className="col-md-6">
                         <Row>
@@ -38,12 +36,11 @@ class TutorCard extends React.Component{
                         <Row>
                             <h2>{this.state.program}</h2>
                         </Row>
-                        <Row>
+
                             <Link to={{ pathname: "hire",
-                                        query:{search: this.state.name.replace(/\s+/g, '+').toLowerCase()} }}> 
-                                <Button className="hire-button" > Hire</Button>
+                                        query:{search: this.state.name.replace(/\s+/g, '+').toLowerCase()}}}> 
+                                <Button className="hire-button"> Hire</Button>
                             </Link>
-                        </Row>
                     </Col>
                     <Col className="col-md-3 text-center">
                         <Row>

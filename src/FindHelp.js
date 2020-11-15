@@ -10,7 +10,8 @@ import {Courses} from './data/Courses.js';
 class FindHelp extends React.Component{
   constructor(props){
     super(props);
-    this.state = {courseCodes: this.props.courses,
+    this.state = {student: this.props.user,
+                  courseCodes: this.props.courses,
                   checkedCourses:[]};
     this.state.tutors = mytutors.filter(tutor => this.getCodes(tutor));
   }
@@ -29,12 +30,6 @@ class FindHelp extends React.Component{
   }
 
   flipcheck (evt) {
-      console.log(evt);
-      /*var checkId = parseInt(evt.target.id)
-      checkId = isNaN(checkId)? 0: checkId;
-      this.state.mask[checkId] = !this.state.mask[checkId];
-      var checkedCourses = this.state.courseCodes.filter((cc, index) => this.state.mask[index]);
-      */
       if (evt) {
         this.state.checkedCourses = evt.map(option => option.value);
         this.setState({tutors: mytutors.filter(tutor => this.getCodes(tutor))});
@@ -42,26 +37,24 @@ class FindHelp extends React.Component{
   }
 
   render() {
-    console.log(this.state.tutors)
     return (
-
-        <Container>
-          <Col className="text-center"> 
-            <h3>Select Courses</h3>
-            <Select
-              closeMenuOnSelect={false}
-              isMulti
-              options={Courses}
-              onChange={this.flipcheck.bind(this)}
-            />
-          </Col>
-          {this.state.tutors.map((tutor) =>
-            <Row>
-              <TutorCard tutor={tutor} grade={this.getGrades(tutor)}/>
-            </Row>
-          )}
-        </Container>
-      );
+      <Container>
+        <Col className="text-center"> 
+          <h3>Select Courses</h3>
+          <Select
+            closeMenuOnSelect={false}
+            isMulti
+            options={Courses}
+            onChange={this.flipcheck.bind(this)}
+          />
+        </Col>
+        {this.state.tutors.map((tutor) =>
+          <Row>
+            <TutorCard tutor={tutor} grade={this.getGrades(tutor)}/>
+          </Row>
+        )}
+      </Container>
+    );
   }
 }
 
