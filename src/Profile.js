@@ -87,6 +87,10 @@ class Profile extends React.Component{
     super(props);
   }
 
+  logout(){
+    this.props.userRegistered(null);
+  }
+
   render() {
     return (
       <Container>
@@ -103,8 +107,12 @@ class Profile extends React.Component{
               <p><b>Email: </b> {this.props.user.email}</p>
             </Row>
             <Row>
+              <p><b>Program: </b> {this.props.user.program}</p>
+            </Row>
+            <Row>
               <p><b>Profile Type: </b> {this.props.user.type}</p>
             </Row>
+            <Button onClick={this.logout.bind(this)}>Logout</Button>
           </Col>
         </Row>
         <Row>

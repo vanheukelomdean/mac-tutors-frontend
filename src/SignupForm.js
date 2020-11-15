@@ -142,7 +142,7 @@ class SignupForm extends React.Component {
     handleSubmit(){
 
         if (this.state.nameFeedback.valid&&this.state.pwd1Feedback.valid&&this.state.pwd2Feedback.valid&&this.state.emailFeedback.valid&&this.state.programFeedback.valid&&this.state.profilePictureFeedback.valid){
-            this.props.userRegistered({email: this.state.email, password: this.state.password, name: this.state.name, picture: this.state.profilePicture, type: (this.state.transcript != null && this.state.paymentInfo != null) ? "tutor" : "student"});
+            this.props.userRegistered({email: this.state.email, password: this.state.password, name: this.state.name, picture: this.state.profilePicture, program: this.state.program, type: (this.state.transcript != null && this.state.paymentInfo != null) ? "tutor" : "student"});
         } else {
             if (this.state.name.length===0){
                 this.setState({nameFeedback: {class:"form-control is-invalid", message: "Enter name"}});

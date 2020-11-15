@@ -2,6 +2,7 @@
     {
         "email" : " ",
         "password" : " ",
+        "program" : "Electrical Engineering, Electrical Engineering Co-op (B.Eng.)",
         "picture" : "./63.jpg",
         "name" : "Guy",
         "type" : "tutor"
@@ -9,6 +10,7 @@
     { 
         "email" : "dummy123@gmail.com",
         "password" : "password123",
+        "program" : "Software Engineering - Embedded Systems, Software Engineering - Embedded Systems Co-op (B.Eng.)",
         "picture" : "./83.png",
         "name" : "Sarah",
         "type" : "student"
@@ -16,6 +18,7 @@
      {
          "email" : "test1@gmail.com",
          "password" : "abcd",
+         "program" : "Honours Communication Studies (B.A.)",
          "picture" : "./60.png",
          "name" : "Julie",
          "type" : "student"
