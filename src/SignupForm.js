@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 import mcmasterPrograms from "./data/mcmasterPrograms";
+import CreditCardInput from 'react-credit-card-input';
+import { faBoxTissue } from '@fortawesome/free-solid-svg-icons';
 
 class SignupForm extends React.Component {
     constructor(props){
@@ -12,6 +14,8 @@ class SignupForm extends React.Component {
             pwd2: "", pwd2Feedback: {class: "", message: "", valid: false},
             email: "", emailFeedback: {class: "", message: "", valid: false},
             program: "",
+            creditCard : { number: "", expiry : "", cvc : "" },
+            paymentFeedback : {class: "", message: "", valid: false},
             programFeedback: {class: "", message: "", valid: false},
             profilePicture: "no-profile.png",
             profilePictureFeedback: {class: "", message: "", valid: false},
@@ -141,8 +145,8 @@ class SignupForm extends React.Component {
   
     handleSubmit(){
 
-        if (this.state.nameFeedback.valid&&this.state.pwd1Feedback.valid&&this.state.pwd2Feedback.valid&&this.state.emailFeedback.valid&&this.state.programFeedback.valid&&this.state.profilePictureFeedback.valid){
-            this.props.userRegistered({email: this.state.email, password: this.state.password, name: this.state.name, picture: this.state.profilePicture, program: this.state.program, type: (this.state.transcript != null && this.state.paymentInfo != null) ? "tutor" : "student"});
+        if (this.state.nameFeedback.valid&&this.state.pwd1Feedback.valid&&this.state.pwd2Feedback.valid&&this.state.emailFeedback.valid&&this.state.programFeedback.valid&&this.state.profilePictureFeedback.valid && this.state.paymentFeedback.valid){
+            this.props.userRegistered({email: this.state.email, password: this.state.password, name: this.state.name, paymentInfo: this.state.creditCard, picture: this.state.profilePicture, program: this.state.program, courses: [], type: (this.state.transcript != null && this.state.paymentInfo != null) ? "tutor" : "student"});
         } else {
             if (this.state.name.length===0){
                 this.setState({nameFeedback: {class:"form-control is-invalid", message: "Enter name"}});
@@ -156,6 +160,8 @@ class SignupForm extends React.Component {
                 this.setState({profilePictureFeedback: {class:"form-control is-invalid", message: "Upload a profile picture"}});
             } if (!this.state.programFeedback.valid){
                 this.setState({programFeedback: {class:"form-control is-invalid", message: "Choose a program"}});
+            } if (!this.state.paymentFeedback.valid){
+                this.setState({paymentFeedback: {class:"form-control is-invalid", message:"Enter your payment info"}});
             }
             this.setState({overallFeedback: {class:"form-control is-invalid", message: "Please fix errors with the form"}});
             setTimeout(function() {
@@ -176,6 +182,29 @@ class SignupForm extends React.Component {
             program: "",
             programFeedback: {class: "", message: "", valid: false}
         });
+    }
+
+    validateCreditCard(){
+        if (this.state.creditCard.number.length > 0 && this.state.creditCard.expiry.length > 0 && this.state.creditCard.cvc.length > 0){
+            this.setState({paymentFeedback: {class:"", message: "", valid: true}});
+        } else {
+            this.setState({paymentFeedback: {class:"", message: "", valid: false}});
+        }
+    }
+
+    handleCardNumberChange(event) {
+        this.setState({creditCard: {number: event.target.value, expiry: this.state.creditCard.expiry, cvc : this.state.creditCard.cvc}});
+        this.validateCreditCard();
+    }
+
+    handleCardExpiryChange(event) {
+        this.setState({creditCard: {number: this.state.creditCard.number, expiry: event.target.value, cvc : this.state.creditCard.cvc}});
+        this.validateCreditCard();
+    }
+
+    handleCardCVCChange(event) {
+        this.setState({creditCard: {number: this.state.creditCard.number, expiry: this.state.creditCard.expiry, cvc : event.target.value}});
+        this.validateCreditCard();
     }
 
     render() {
@@ -222,7 +251,16 @@ class SignupForm extends React.Component {
                     <input type="file" class="form-control-file" id="profile-pic" accept=".jpeg,.png,.jpg" onChange={this.getUpload.bind(this)}/><br/>
                     <div id="picturefeedback" class={this.state.profilePictureFeedback.class}>{this.state.profilePictureFeedback.message}</div>
                 </div>
-                
+                <div class="form-group required">
+                    <label class="control-label">Credit Card Info</label><br/>
+                    <CreditCardInput
+                        cardNumberInputProps={{ value: this.state.creditCard.number, onChange: this.handleCardNumberChange.bind(this) }}
+                        cardExpiryInputProps={{ value: this.state.creditCard.expiry, onChange: this.handleCardExpiryChange.bind(this) }}
+                        cardCVCInputProps={{ value: this.state.creditCard.cvc, onChange: this.handleCardCVCChange.bind(this) }}
+                        fieldClassName="input"
+                    />
+                    <div id="paymentfeedback" class={this.state.paymentFeedback.class}>{this.state.paymentFeedback.message}</div>
+                </div>
                 <div class="alert alert-info">
                     <h3>Becoming a tutor</h3>
                     <p>Upload the following files to become a tutor (can be completed later)</p>
