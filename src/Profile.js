@@ -45,7 +45,7 @@ class AddClasses extends React.Component {
       this.state.checkedCourses = evt.map(option => option.value);
     }
     if (evt && evt.length==0){
-      this.setState({checkedCourses : []})
+      this.setState({checkedCourses : []});
     }
   }
 
