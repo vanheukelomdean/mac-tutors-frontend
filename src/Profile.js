@@ -13,7 +13,9 @@ class AddClasses extends React.Component {
   handleSubmit() { 
     this.setState({transcriptFeedback: { class: "", message: ""}, paymentFeedback: { class: "", message: ""}});
     if (this.state.transcript != null && this.state.paymentInfo != null){
-      this.props.userRegistered({email: this.props.user.email, password: this.props.user.password, name: this.props.user.name, picture: this.props.user.picture, type: "tutor"})
+      var usr = this.props.user;
+      usr.type = "tutor";
+      this.props.userRegistered(usr);
     } if (this.state.transcript == null) {
       this.setState({transcriptFeedback: {class:"form-control is-invalid", message:"Upload a transcript"}})
     } if (this.state.paymentInfo == null) {
@@ -42,12 +44,19 @@ class AddClasses extends React.Component {
     if (evt) {
       this.state.checkedCourses = evt.map(option => option.value);
     }
+    if (evt && evt.length==0){
+      this.setState({checkedCourses : []});
+    }
+  }
+
+  addCourses(){
+    this.props.addCourses(this.state.checkedCourses);
   }
 
   render() {
     if (this.props.user.type === "student"){
       return(
-        <div class="col" colspan="2">
+        <div class="col" colSpan="2">
           <h3 class="text-center">You must register as a tutor to add classes.</h3>
           <div class="alert alert-info">
             <h3>Become a tutor</h3>
@@ -68,15 +77,16 @@ class AddClasses extends React.Component {
       )
     } else {
       return(
-        <Col className="text-center"> 
-          <h3>Select Courses You Would Like to Be a Tutor For:</h3>
+        <Container>
           <Select
             closeMenuOnSelect={false}
             isMulti
             options={Courses}
             onChange={this.flipcheck.bind(this)}
-          />
-        </Col>
+          /><br/>
+          <Button onClick={this.addCourses.bind(this)}>Add</Button>
+        </Container>
+          
       )   
     }
   }
@@ -89,6 +99,10 @@ class Profile extends React.Component{
 
   logout(){
     this.props.userRegistered(null);
+  }
+
+  deleteCourse(event){
+    this.props.deleteCourse(event.target.id);
   }
 
   render() {
@@ -104,19 +118,40 @@ class Profile extends React.Component{
             </Row>
             <Row><br/></Row>
             <Row>
-              <p><b>Email: </b> {this.props.user.email}</p>
+              <p><b>Email: </b>{this.props.user.email}</p>
             </Row>
             <Row>
-              <p><b>Program: </b> {this.props.user.program}</p>
+              <b>Program:</b><p>  {this.props.user.program}</p>
             </Row>
             <Row>
-              <p><b>Profile Type: </b> {this.props.user.type}</p>
+              <p><b>Profile Type: </b>{this.props.user.type}</p>
             </Row>
             <Button onClick={this.logout.bind(this)}>Logout</Button>
           </Col>
         </Row>
         <Row>
-          <AddClasses user={this.props.user} userRegistered={this.props.userRegistered}/>
+          <Col className="text-center">
+            {this.props.user.type==="tutor" ? 
+            <Container>
+              <h3 class="text-center">Courses you are a tutor for:</h3>
+              <Row>
+                {(this.props.user.courses.length==0) ? <Col class="text-center">No Courses Added.</Col> : this.props.user.courses.map((course) =>
+                <Card style={{ width: '14rem' }}>
+                  <Card.Body>
+                    <Card.Text>
+                      <span class="bg-light">{course}</span>
+                    </Card.Text>
+                    <Button id={course} onClick={this.deleteCourse.bind(this)}>Delete</Button>
+                  </Card.Body>               
+                </Card> 
+              )}
+              </Row> 
+            </Container>: ""}
+            <br/>
+            <h3>{this.props.user.type==="tutor" ? "Add courses you would like to tutor:" : ""}</h3>
+            <AddClasses deleteCourse={this.props.deleteCourse} addCourses={this.props.addCourses} user={this.props.user} userRegistered={this.props.userRegistered}/><br/>
+          </Col>
+          
         </Row>
       </Container>
       );
