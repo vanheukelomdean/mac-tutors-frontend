@@ -111,6 +111,12 @@ img {
 }
 }
 
+.link {
+  background: none!important;
+  border: none;
+  padding: 10px!important;
+}
+
 .btn {
   border: none;
   background-color: #a10000;

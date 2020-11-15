@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import { Container, Row, Col, Button, Image, Card } from 'react-bootstrap';
 import StarRatings from 'react-star-ratings';
-import tutors from './data/tutors.json';
+import tutors from './data/tutors';
 import './App.css';
 
 class TutorProfile extends React.Component{
