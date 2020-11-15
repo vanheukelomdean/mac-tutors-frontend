@@ -48,7 +48,9 @@ class HomePage extends React.Component {
   handleSubmit() { 
     this.setState({transcriptFeedback: { class: "", message: ""}, paymentFeedback: { class: "", message: ""}});
     if (this.state.transcript != null && this.state.paymentInfo != null){
-      this.props.userRegistered({email: this.props.user.email, password: this.props.user.password, name: this.props.user.name, type: "tutor"})
+      var usr = this.props.user;
+      usr.type = "tutor";
+      this.props.userRegistered(usr)
     } if (this.state.transcript == null) {
       this.setState({transcriptFeedback: {class:"form-control is-invalid", message:"Upload a transcript"}})
     } if (this.state.paymentInfo == null) {
@@ -82,12 +84,12 @@ class HomePage extends React.Component {
             <h3>Becoming a tutor</h3>
             <p>Upload the following files to become a tutor (can be completed later)</p>
             <div class="form-group">
-                <label for="transcript" class="control-label">Upload transcript (pdf):</label>
+                <label class="control-label">Upload transcript (pdf):</label>
                 <input type="file" class="form-control-file" id="transcript" accept=".pdf" onChange={this.getUpload.bind(this)}/>
                 <div id="transcriptfeedback" class={this.state.transcriptFeedback.class}>{this.state.transcriptFeedback.message}</div>
             </div>
             <div class="form-group">
-                <label for="payment-info" class="control-label">Upload void check or direct deposit form (pdf):</label>
+                <label class="control-label">Upload void check or direct deposit form (pdf):</label>
                 <input type="file" class="form-control-file" id="payment-info" accept=".pdf" onChange={this.getUpload.bind(this)}/>
                 <div id="paymentfeedback" class={this.state.paymentFeedback.class}>{this.state.paymentFeedback.message}</div>
             </div>
@@ -114,7 +116,7 @@ class HomePage extends React.Component {
           <img src="teach.png" alt="Teach Icon"/>
           <h1>Teach.</h1>
           <b>Help students with their courses at McMaster.</b><br/>
-          <p>Add couses you would like to be a tutor for on your profile page.</p>
+          <p>{this.props.user.type==="tutor" ? "Add couses you would like to be a tutor for on your profile page." : ""}</p>
         </div>
       </div>
       <div class="row">
@@ -122,7 +124,7 @@ class HomePage extends React.Component {
           <Link to="/FindHelp"><input type="button" value="Find Help" id="gethelp" class="btn btn-secondary"/></Link>
         </div>
         <div class="col">
-          <Link to="/UserProfile"><input type="button" value="Profile" id="givehelp" class="btn btn-secondary" disabled={this.props.user.type==="student"}/></Link>
+          <Link to="/UserProfile"><input type="button" value="Profile" id="givehelp" class="btn btn-secondary"/></Link>
         </div>
       </div>
       {this.infoMessage()}
