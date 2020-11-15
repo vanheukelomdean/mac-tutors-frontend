@@ -1,6 +1,6 @@
 import {HashRouter as Router, Route, Link, NavLink, Redirect} from 'react-router-dom';
 import React from 'react';
-import Navbar from 'react-bootstrap/Navbar'
+import {Navbar, Nav} from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faSearch, faBell, faBars} from '@fortawesome/free-solid-svg-icons';
 import {Form, FormControl} from 'react-bootstrap'
@@ -9,6 +9,7 @@ import Info from './Info';
 import FindHelp from './FindHelp';
 import GiveHelp from './GiveHelp';
 import Requests from './Requests';
+import Hire from './Hire'
 import tutors from './data/tutors.json';
 import TutorProfile from './TutorProfile';
 import './App.css';
@@ -64,12 +65,13 @@ class App extends React.Component {
         
         <Switch>
           <Route exact path="/Home" render={(props) => (<Home {...props} userRegistered={this.userRegistered} user={this.state.user} findHelp={this.findHelp} giveHelp={this.giveHelp}/>)} />
-          <Route path="/FindHelp" render={(props) => (this.state.user != null ? <FindHelp {...props} courses={ ["2C03", "4HC3", "3A04"]} /> : <Redirect to='/Info' />)}/>
+          <Route path="/FindHelp" render={(props) => (this.state.user != null ? <FindHelp {...props} user={this.state.user} courses={ ["2C03", "4HC3", "3A04"]} /> : <Redirect to='/Info' />)}/>
           {/* <Route path="/GiveHelp" render={(props) => (this.state.user != null ? <GiveHelp/> : <Redirect to='/Info'/>)}/> */}
           <Route path="/Requests" render={(props) => (this.state.user != null ? <Requests {...props} user={this.state.user}/> : <Redirect to='/Info'/>)}/>
           <Route path="/Info" component={Info}/>
           <Route path="/SearchTutors" component={SearchTutors}/>
-          <Route path="/profile" render={(props) => (<TutorProfile {...props} name={this.state.name} />)}/>
+          <Route path="/profile" render={(props) => (<TutorProfile {...props}/>)}/>
+          <Route path="/hire" render={(props) => (<Hire {...props} user={this.state.user} />)}/>
         </Switch>
 
       </Router>

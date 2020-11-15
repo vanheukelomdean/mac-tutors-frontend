@@ -225,7 +225,15 @@ img {
   font-size: 60px;
 }
 
+.datetime-label {
+  margin-right: 10px;
+}
 
+.banner{
+  text-align: center;
+  margin-top: 20px;
+  width: 100%;
+}
 
 @media screen and (max-width: 600px) {
 .navbar a:not(:first-child) {display: none;}
