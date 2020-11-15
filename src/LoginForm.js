@@ -78,7 +78,7 @@ class LoginForm extends React.Component {
                   <div id="pwdfeedback" class={this.state.pwdFeedback.class}>{this.state.pwdFeedback.message}</div>
               </div>
               <input type="button" value="Login" id="login" class="btn btn-primary" onClick={this.handleSubmit.bind(this)}/>
-              <input type="button" class="btn btn-link" value="Sign Up" id="signup" onClick={this.props.changeForm}/>
+              <input type="button" class="link btn-link" value="Sign Up" id="signup" onClick={this.props.changeForm}/>
           </form>
           
         </div>

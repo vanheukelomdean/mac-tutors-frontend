@@ -2,19 +2,22 @@
     {
         "email" : " ",
         "password" : " ",
+        "picture" : "./63.jpg",
         "name" : "Guy",
         "type" : "tutor"
     },
     { 
         "email" : "dummy123@gmail.com",
         "password" : "password123",
-        "name" : "Dean",
+        "picture" : "./83.png",
+        "name" : "Sarah",
         "type" : "student"
      },
      {
          "email" : "test1@gmail.com",
          "password" : "abcd",
-         "name" : "Will",
+         "picture" : "./60.png",
+         "name" : "Julie",
          "type" : "student"
      }
 ]

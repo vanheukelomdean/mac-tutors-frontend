@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import mcmasterPrograms from "./data/mcmasterPrograms.json";
+import mcmasterPrograms from "./data/mcmasterPrograms";
 
 class SignupForm extends React.Component {
     constructor(props){
@@ -142,7 +142,7 @@ class SignupForm extends React.Component {
     handleSubmit(){
 
         if (this.state.nameFeedback.valid&&this.state.pwd1Feedback.valid&&this.state.pwd2Feedback.valid&&this.state.emailFeedback.valid&&this.state.programFeedback.valid&&this.state.profilePictureFeedback.valid){
-            this.props.userRegistered({email: this.state.email, password: this.state.password, name: this.state.name, type: (this.state.transcript != null && this.state.paymentInfo != null) ? "tutor" : "student"});
+            this.props.userRegistered({email: this.state.email, password: this.state.password, name: this.state.name, picture: this.state.profilePicture, type: (this.state.transcript != null && this.state.paymentInfo != null) ? "tutor" : "student"});
         } else {
             if (this.state.name.length===0){
                 this.setState({nameFeedback: {class:"form-control is-invalid", message: "Enter name"}});
@@ -238,7 +238,7 @@ class SignupForm extends React.Component {
                     </div>
                 </div>
                 <input type="button" value="Sign up" id="signup" class="btn btn-primary" onClick={this.handleSubmit.bind(this)} />
-                <input type="button" class="btn btn-link" value="Login" id="login" onClick={this.props.changeForm}/>
+                <input type="button" class="link btn-link" value="Login" id="login" onClick={this.props.changeForm}/>
                 <div id="submitfeedback" class={this.state.overallFeedback.class}>{this.state.overallFeedback.message}</div>
             </form>
         </div>
