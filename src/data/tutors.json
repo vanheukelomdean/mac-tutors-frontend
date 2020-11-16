@@ -20,17 +20,17 @@
                     "rating": 4,
                     "student": {"name": "Ryan Shortt",
                                 "program": "Computer Engineering",
-                                "image": "ryanshortt.jpg"}},
+                                "image": "./images/ryanshortt.jpg"}},
                     {"text": "pleasure working with him",
                     "rating": 5,
                     "student": {"name": "Will Donaldson",
                                 "program": "Software Engineering",
-                                "image": "willdonaldson.jpg"}},
+                                "image": "./images/willdonaldson.jpg"}},
                     {"text": "mean man no teach :(",
                         "rating": 1,
                         "student": {"name": "Scott O'Donoghue",
                                     "program": "Economoics",
-                                    "image": "scottodonoghue.jpg"}}
+                                    "image": "./images/scottodonoghue.jpg"}}
                     ]
     },
     {
@@ -54,12 +54,12 @@
                     "rating": 4,
                     "student": {"name": "Tyler Kite",
                                 "program": "Mechanical Engineering",
-                                "image": "tylerkite.jpg"}},
+                                "image": "./images/tylerkite.jpg"}},
                     {"text": "pleasure working with him",
                     "rating": 2,
                     "student": {"name": "Will Donaldson",
                                 "program": "Software Engineering",
-                                "image": "willdonaldson.jpg"}}
+                                "image": "./images/willdonaldson.jpg"}}
                     ]
     }
 ]

@@ -22,7 +22,7 @@ class TutorProfile extends React.Component{
                     rating: this.state.newRating,
                     student:    {name: this.state.student.name,
                                 program: this.state.student.program,
-                                image: this.state.student.image}}
+                                image: this.state.student.picture}}
                 ],
         newRating: 0,
         newReview: ""
@@ -101,7 +101,7 @@ class TutorProfile extends React.Component{
                                         starSpacing="3px" />
                         </Col>
                         <Col className="col-md-1 card-col">
-                            <Image src={`./images/${student.image}`} className="avatar-sm"/>
+                            <Image src={student.image} className="avatar-sm"/>
                         </Col>
                         <Col className="col-md-3 card-col">
                                 <p> {student.name + ", " + student.program}</p>
