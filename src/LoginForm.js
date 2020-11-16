@@ -74,7 +74,7 @@ class LoginForm extends React.Component {
               </div>
               <div class="form-group">
                   <label for="pwd">Password:</label>
-                  <input type="text" class="form-control" id="pwd" value={this.state.pwd} onChange={this.inputStateChange.bind(this)}/>
+                  <input type="password" class="form-control" id="pwd" value={this.state.pwd} onChange={this.inputStateChange.bind(this)}/>
                   <div id="pwdfeedback" class={this.state.pwdFeedback.class}>{this.state.pwdFeedback.message}</div>
               </div>
               <input type="button" value="Login" id="login" class="btn btn-primary" onClick={this.handleSubmit.bind(this)}/>
