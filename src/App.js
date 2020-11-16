@@ -1,5 +1,5 @@
 import React from 'react';
-import {HashRouter as Router, Route, Link, NavLink, Redirect} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Link, NavLink, Redirect} from 'react-router-dom';
 import Switch from 'react-bootstrap/esm/Switch';
 import {Navbar, Nav} from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -57,22 +57,21 @@ class App extends React.Component {
       <Router>
         <Navbar expand="lg">
           <Navbar.Brand ><p className="brand"> MacTutors</p></Navbar.Brand>
-          <NavLink to="/Home">
+          <Nav.Link href="/Home">
             <FontAwesomeIcon icon={faHome} size="2x"/>
-          </NavLink>
-          <NavLink to="/FindHelp">Find Help</NavLink>
-          
+          </Nav.Link>
+          <Nav.Link href="/FindHelp">Find Help</Nav.Link>
           <Form inline>
               <FormControl type="text" placeholder="Search Tutors" className="mr-sm-2" value={this.state.search} onChange={this.handleSearchInput.bind(this)}/>
-              <NavLink to= "/SearchTutors"><FontAwesomeIcon icon={faSearch} size="2x"/></NavLink>
+              <Nav.Link href= "/SearchTutors"><FontAwesomeIcon icon={faSearch} size="2x"/></Nav.Link>
           </Form>
           
-          <NavLink to="/Requests">
+          <Nav.Link href="/Requests">
             <FontAwesomeIcon icon={faBell} size="2x"/>
-          </NavLink>
-          <NavLink to="/UserProfile">
+          </Nav.Link>
+          <Nav.Link href="/UserProfile">
             <FontAwesomeIcon icon={faUserCircle} size="2x"/>
-          </NavLink>
+          </Nav.Link>
         </Navbar>
         
         <Switch>
