@@ -33,6 +33,9 @@ class FindHelp extends React.Component{
       if (evt) {
         this.state.checkedCourses = evt.map(option => option.value);
         this.setState({tutors: mytutors.filter(tutor => this.getCodes(tutor))});
+      } else {
+        this.setState({checkedCourses: []});
+        this.setState({tutors: mytutors.filter(tutor => this.getCodes(tutor))});
       }
   }
 
@@ -48,7 +51,7 @@ class FindHelp extends React.Component{
             onChange={this.flipcheck.bind(this)}
           />
         </Col>
-        {this.state.tutors.map((tutor) =>
+        {this.state.checkedCourses.length == 0 ? <Row><b>No courses selected.</b></Row> : this.state.tutors.length == 0 ? <Row><b>No tutors found for selected courses.</b></Row> : this.state.tutors.map((tutor) =>
           <Row>
             <TutorCard tutor={tutor} grade={this.getGrades(tutor)}/>
           </Row>

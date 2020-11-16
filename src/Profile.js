@@ -131,9 +131,9 @@ class Profile extends React.Component{
         </Row>
         <Row>
           <Col className="text-center">
+            <h3 class="text-center">Courses you are a tutor for:</h3>
             {this.props.user.type==="tutor" ? 
             <Container>
-              <h3 class="text-center">Courses you are a tutor for:</h3>
               <Row>
                 {(this.props.user.courses.length==0) ? <Col class="text-center">No Courses Added.</Col> : this.props.user.courses.map((course) =>
                 <Card style={{ width: '14rem' }}>

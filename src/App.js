@@ -57,21 +57,21 @@ class App extends React.Component {
       <Router>
         <Navbar expand="lg">
           <Navbar.Brand ><p className="brand"> MacTutors</p></Navbar.Brand>
-          <Nav.Link href="/Home">
+          <NavLink to="/Home">
             <FontAwesomeIcon icon={faHome} size="2x"/>
-          </Nav.Link>
-          <Nav.Link href="/FindHelp">Find Help</Nav.Link>
+          </NavLink>
+          <NavLink to="/FindHelp">Find Help</NavLink>
           <Form inline>
               <FormControl type="text" placeholder="Search Tutors" className="mr-sm-2" value={this.state.search} onChange={this.handleSearchInput.bind(this)}/>
-              <Nav.Link href= "/SearchTutors"><FontAwesomeIcon icon={faSearch} size="2x"/></Nav.Link>
+              <NavLink to= "/SearchTutors"><FontAwesomeIcon icon={faSearch} size="2x"/></NavLink>
           </Form>
           
-          <Nav.Link href="/Requests">
+          <NavLink to="/Requests">
             <FontAwesomeIcon icon={faBell} size="2x"/>
-          </Nav.Link>
-          <Nav.Link href="/UserProfile">
+          </NavLink>
+          <NavLink to="/UserProfile">
             <FontAwesomeIcon icon={faUserCircle} size="2x"/>
-          </Nav.Link>
+          </NavLink>
         </Navbar>
         
         <Switch>

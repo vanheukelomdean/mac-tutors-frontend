@@ -1,10 +1,10 @@
 [
     {
-        "email" : " ",
+        "email" : "test@mcmaster.ca",
         "password" : " ",
-        "courses" : [],
+        "courses" : ["2C03", "4TH3"],
         "program" : "Electrical Engineering, Electrical Engineering Co-op (B.Eng.)",
-        "picture" : "./63.jpg",
+        "picture" : "./images/63.jpg",
         "name" : "Guy",
         "type" : "tutor"
     },
@@ -13,7 +13,7 @@
         "password" : "password123",
         "courses" : [],
         "program" : "Software Engineering - Embedded Systems, Software Engineering - Embedded Systems Co-op (B.Eng.)",
-        "picture" : "./83.jpg",
+        "picture" : "./images/83.jpg",
         "name" : "Sarah",
         "type" : "student"
      },
@@ -22,7 +22,7 @@
          "password" : "abcd",
          "courses" : [],
          "program" : "Honours Communication Studies (B.A.)",
-         "picture" : "./60.jpg",
+         "picture" : "./images/60.jpg",
          "name" : "Julie",
          "type" : "student"
      }

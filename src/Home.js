@@ -15,12 +15,12 @@ class WelcomePage extends React.Component {
       <div class="container">
         <div class="row">
           <div class="col">
-                <img src="learn.png" alt="Learn Icon"/>
+                <img src="images/learn.png" alt="Learn Icon"/>
                 <h1>Learn.</h1>
                 <b>Reach McMaster students who have been in your shoes and are willing to help.</b>
           </div>
           <div class="col">
-            <img src="teach.png" alt="Teach Icon"/>
+            <img src="images/teach.png" alt="Teach Icon"/>
             <h1>Teach.</h1>
             <b>Earn money and help fellow students achieve their academic goals.</b>
           </div>
@@ -50,13 +50,13 @@ class HomePage extends React.Component {
       <div class="container">
       <div class="row">
         <div class="col">
-              <img src="learn.png" alt="Learn Icon"/>
+              <img src="images/learn.png" alt="Learn Icon"/>
               <h1>Learn.</h1>
               <b>Find Tutors for you courses at McMaster.</b><br/>
               
         </div>
         <div class="col">
-          <img src="teach.png" alt="Teach Icon"/>
+          <img src="images/teach.png" alt="Teach Icon"/>
           <h1>Teach.</h1>
           <b>Help students with their courses at McMaster.</b><br/>
           <p>{this.props.user.type==="tutor" ? "Add couses you would like to tutor on your profile page." : "Register as a tutor on your profile page"}</p>

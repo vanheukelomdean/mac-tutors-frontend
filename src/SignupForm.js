@@ -17,7 +17,7 @@ class SignupForm extends React.Component {
             creditCard : { number: "", expiry : "", cvc : "" },
             paymentFeedback : {class: "", message: "", valid: false},
             programFeedback: {class: "", message: "", valid: false},
-            profilePicture: "no-profile.png",
+            profilePicture: "/images/no-profile.png",
             profilePictureFeedback: {class: "", message: "", valid: false},
             transcript: null,
             paymentInfo: null,
