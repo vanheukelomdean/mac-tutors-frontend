@@ -110,7 +110,7 @@ class LoginForm extends React.Component {
             date: null,
             start: null,
             end: null,
-            notes: null
+            notes: ""
         });
 
         console.log("cleared");
@@ -196,7 +196,7 @@ class LoginForm extends React.Component {
                                 <Form.Label>Extra Notes</Form.Label>
                                 <Form.Control as="textarea" 
                                             rows={3}
-                                            onSelect={event => this.setState({ notes: event.target.value })}
+                                            onChange={event => this.setState({ notes: event.target.value })}
                                             value={this.state.notes} />
                             </Form.Group>
                         </Col>
