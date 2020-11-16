@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Container, Col,
-        Form} from 'react-bootstrap';
+        Alert} from 'react-bootstrap';
 import mytutors from './data/tutors.json';
 import TutorCard from './TutorCard.js';
 import './App.css';
@@ -51,7 +51,9 @@ class FindHelp extends React.Component{
             onChange={this.flipcheck.bind(this)}
           />
         </Col>
-        {this.state.checkedCourses.length == 0 ? <Row><b>No courses selected.</b></Row> : this.state.tutors.length == 0 ? <Row><b>No tutors found for selected courses.</b></Row> : this.state.tutors.map((tutor) =>
+        <Alert variant="warning" show={this.state.checkedCourses.length == 0}>No courses selected.</Alert>
+        <Alert variant="warning" show={this.state.checkedCourses.length != 0 && this.state.tutors.length == 0}>No tutors found for the selected courses.</Alert>
+        {this.state.tutors.map((tutor) =>
           <Row>
             <TutorCard tutor={tutor} grade={this.getGrades(tutor)}/>
           </Row>
