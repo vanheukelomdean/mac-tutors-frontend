@@ -45,22 +45,24 @@ class StudentRequests extends React.Component {
     if (this.props.user.type === "student") {
       return (
         <Col><br/>
-            <h1>Requests from Students:</h1><br/>
-            <b>You must become a tutor before you can receive requests from students.</b><br/>
+            <h1>Teaching</h1><br/>
+            <b>You must become a tutor before you can receive requests from students.</b><br/><br/>
             <Link to="/UserProfile"><input type="button" value="Profile" id="profile" class="btn btn-secondary"/></Link>
         </Col>
       );
     } else if (relevantRequests.length == 0) {
       return(
         <Col className="text-center">
-          <h1>Requests from Students:</h1><br/>
+          <h1>Teaching</h1><br/>
+          <h6>Requests from students</h6>
           <b>You have no requests from students at this time.</b>
         </Col>
       );  
     } else {
       return (
       <Col>
-        <h1>Requests from Students:</h1><br/>
+        <h1>Teaching</h1><br/>
+        <h5>Requests from students:</h5>
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -111,8 +113,8 @@ class TutorRequests extends React.Component{
     if (relevantRequests.length == 0) {
       return (
         <Col><br/>
-            <h1>Requests for Tutors:</h1><br/>
-            <b>You currently have no active requests for tutors at this time.</b>
+            <h1>Learning</h1><br/>
+            <b>You currently have no active requests for tutors.</b>
             <p>You can request tutors from the Find Help page.</p>
             <Link to="/FindHelp"><input type="button" value="Find Help" id="findhelp" class="btn btn-secondary"/></Link>
         </Col>
@@ -120,7 +122,8 @@ class TutorRequests extends React.Component{
     } else {
       return (
       <Col>
-        <h1>Requests for Tutors:</h1><br/>
+        <h1>Learning</h1><br/>
+        <h5>Requests for tutors:</h5>
       <Table striped bordered hover>
         <thead>
           <tr>
