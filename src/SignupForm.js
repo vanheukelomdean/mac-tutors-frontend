@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import mcmasterPrograms from "./data/mcmasterPrograms";
 import CreditCardInput from 'react-credit-card-input';
-import { faBoxTissue } from '@fortawesome/free-solid-svg-icons';
 
 class SignupForm extends React.Component {
     constructor(props){

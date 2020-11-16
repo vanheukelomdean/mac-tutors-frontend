@@ -11,7 +11,7 @@ class Info extends React.Component{
         return (
         <div class="text-center"><br/>
             <h1>You Must Login before you can view this page.</h1>
-            <Link to="/Home"><input type="button" value="Home" id="home" class="btn btn-secondary"/></Link>
+            <Link to="/home"><input type="button" value="Home" id="home" class="btn btn-secondary"/></Link>
         </div>
         );
   }

@@ -64,10 +64,10 @@ class HomePage extends React.Component {
       </div>
       <div class="row">
         <div class="col">
-          <Link to="/FindHelp"><input type="button" value="Find Help" id="gethelp" class="btn btn-secondary"/></Link>
+          <Link to="/findhelp"><input type="button" value="Find Help" id="gethelp" class="btn btn-secondary"/></Link>
         </div>
         <div class="col">
-          <Link to="/UserProfile"><input type="button" value="Profile" id="givehelp" class="btn btn-secondary"/></Link>
+          <Link to="/userprofile"><input type="button" value="Profile" id="givehelp" class="btn btn-secondary"/></Link>
         </div>
       </div>
       </div>

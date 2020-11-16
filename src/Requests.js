@@ -47,7 +47,7 @@ class StudentRequests extends React.Component {
         <Col><br/>
             <h1>Teaching</h1><br/>
             <b>You must become a tutor before you can receive requests from students.</b><br/><br/>
-            <Link to="/UserProfile"><input type="button" value="Profile" id="profile" class="btn btn-secondary"/></Link>
+            <Link to="/userprofile"><input type="button" value="Profile" id="profile" class="btn btn-secondary"/></Link>
         </Col>
       );
     } else if (relevantRequests.length == 0) {
@@ -116,7 +116,7 @@ class TutorRequests extends React.Component{
             <h1>Learning</h1><br/>
             <b>You currently have no active requests for tutors.</b>
             <p>You can request tutors from the Find Help page.</p>
-            <Link to="/FindHelp"><input type="button" value="Find Help" id="findhelp" class="btn btn-secondary"/></Link>
+            <Link to="/findhelp"><input type="button" value="Find Help" id="findhelp" class="btn btn-secondary"/></Link>
         </Col>
       );
     } else {
