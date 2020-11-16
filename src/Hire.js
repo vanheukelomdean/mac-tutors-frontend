@@ -59,9 +59,12 @@ class LoginForm extends React.Component {
     calcDuration() {
         if (this.state.start != null && this.state.end != null) {
             if(this.state.end > this.state.start) {
+
                 this.setState({duration:  moment.duration(this.state.end.diff(this.state.start)).asHours(),
                                 startGTend: false,
                                 endFeedBack: null});
+                console.log(this.state.end);
+                console.log(this.state.start);
                 console.log(this.state.duration);
 
             } else {
@@ -178,7 +181,7 @@ class LoginForm extends React.Component {
                             <Form.Group className="required">
                                 <Form.Label for="end-time" className="control-label datetime-label">End Time:</Form.Label>
                                 <TimePicker id="end-time"
-                                            onSelect={this.endTimeChange.bind(this)}
+                                            onChange={this.endTimeChange.bind(this)}
                                             use12Hours={true}
                                             value={this.state.end}
                                             showSecond={false}

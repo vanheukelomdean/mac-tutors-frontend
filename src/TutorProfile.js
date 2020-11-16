@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import { Container, Row, Col, Button, Image, Card } from 'react-bootstrap';
+import { Container, Row, Col, Button, Image, Card, Form} from 'react-bootstrap';
 import StarRatings from 'react-star-ratings';
 import tutors from './data/tutors';
 import './App.css';
@@ -10,6 +10,23 @@ class TutorProfile extends React.Component{
     super(props);
     var name = this.props.location.query.search.replace(/\+/g, ' ');
     this.state = tutors.filter(profile => profile.name.toLowerCase() == name)[0];
+    this.state.student = this.props.user;
+    this.state.newRating = 0;
+    this.state.newReview = "";
+  }
+
+  addReview(){
+      this.setState({
+        reviews: [...this.state.reviews,
+                    {text: this.state.newReview,
+                    rating: this.state.newRating,
+                    student:    {name: this.state.student.name,
+                                program: this.state.student.program,
+                                image: this.state.student.image}}
+                ],
+        newRating: 0,
+        newReview: ""
+      });
   }
 
   render() {
@@ -72,30 +89,50 @@ class TutorProfile extends React.Component{
             <Row> 
                 <Card className="review-card">
                     <Row>
-                        <Col className="col-md-6 card-col">
-                            <Row>
-                                <p>{text}</p>
-                            </Row>
-                            <Row>
-                                <StarRatings rating={this.state.rating}
-                                            starRatedColor="gold"
-                                            numberOfStars={5}
-                                            name='rating'
-                                            starDimension="20px"
-                                            starSpacing="3px" />
-                            </Row>
+                        <Col className="col-md-4 card-col">
+                            <p>{text}</p>
                         </Col>
-                        <Col className="col-md-2 card-col">
+                        <Col className="col-md-3 card-col">
+                            <StarRatings rating={rating}
+                                        starRatedColor="gold"
+                                        numberOfStars={5}
+                                        name='rating'
+                                        starDimension="20px"
+                                        starSpacing="3px" />
+                        </Col>
+                        <Col className="col-md-1 card-col">
                             <Image src={`./images/${student.image}`} className="avatar-sm"/>
                         </Col>
-                        <Col className="col-md-4 card-col">
+                        <Col className="col-md-3 card-col">
                                 <p> {student.name + ", " + student.program}</p>
                         </Col>
                     </Row>
                 </Card>
             </Row>
-
             )}
+            <Row>
+                <Col className="col-md-6">
+                    <Form.Group>
+                        <Form.Control as="textarea" 
+                                    rows={2}
+                                    onChange={event => this.setState({ newReview: event.target.value })}
+                                    value={this.state.newReview} />
+                    </Form.Group>
+                </Col>
+                <Col className="col-md-3">
+                    <StarRatings rating={this.state.newRating}
+                                    starRatedColor="gold"
+                                    numberOfStars={5}
+                                    name='rating'
+                                    starHoverColor="gold"
+                                    changeRating={newRating => this.setState({newRating: newRating})}
+                                    starDimension="20px"
+                                    starSpacing="3px" />
+                </Col>
+                <Col className="col-md-3">
+                    <Button onClick={this.addReview.bind(this)}> Leave Review </Button>
+                </Col>
+            </Row>
         </Container>
       );
   }
